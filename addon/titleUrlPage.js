@@ -12,7 +12,7 @@ function updateUrl() {
 function getTitle(){
     var url = document.URL;
     
-    url = url.replace(/(https?:\/\/[^\/]*)[^:]*/i,"$1");
+    url = url.replace(/(https?:\/\/[^\/]*\/)[^:]*/i,"$1");
     
     if(document.title.indexOf(url) < 0){
         return document.title + " | " + url;
