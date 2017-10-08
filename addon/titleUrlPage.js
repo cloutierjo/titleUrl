@@ -3,6 +3,10 @@ browser.runtime.onMessage.addListener(updateUrl)
 updateUrl()
 
 function updateUrl() {
+	getTitle();
+}
+
+function getTitle() {
 	var url = document.URL;
 
 	url = url.replace(/(https?:\/\/[^\/]*\/)[^:]*/i, "$1");
@@ -17,6 +21,9 @@ function updateUrl() {
 		if (result.separator) {
 			separator = result.separator;
 		}
-		document.title = document.title + " " + separator + " " + url;
+
+		if (document.title.indexOf(url) < 0) {
+			document.title = document.title + " " + separator + " " + url;
+		}		
 	}
 }
