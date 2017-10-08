@@ -7,7 +7,7 @@
 
 
   "permissions": [
-    "<all_urls>", "tabs"
+    "<all_urls>", "tabs", "storage"
   ],
   
   "content_scripts": [
@@ -18,6 +18,11 @@
   ],
   "background": {
       "scripts": ["titleurl.js"]
+  },
+	
+  "options_ui": {
+      "page": "options/options.html",
+	  "browser_style": true
   }
   
 
