@@ -1,29 +1,26 @@
 {
-  "manifest_version": 2,
-  "name": "TitleURL",
-  "version": "0.3b",
-
-  "description": "Add the current URL to the windows title bar",
-
-
-  "permissions": [
-    "<all_urls>", "tabs", "storage"
-  ],
-  
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["titleUrlPage.js"]
-    }
-  ],
-  "background": {
-      "scripts": ["titleurl.js"]
-  },
+	"manifest_version": 2,
+	"name": "TitleURL",
+	"version": "0.3b",
 	
-  "options_ui": {
-      "page": "options/options.html",
-	  "browser_style": true
-  }
-  
+	"description": "Add the current URL to the windows title bar",
 
+	"permissions": [
+		"<all_urls>", "tabs", "storage"
+	],
+	
+	"content_scripts": [
+	{
+		"matches": ["<all_urls>"],
+		"js": ["titleUrlPage.js"]
+	}
+	],
+	"background": {
+		"scripts": ["titleurl.js"]
+	},
+	
+	"options_ui": {
+		"page": "options/options.html",
+		"browser_style": true
+	}
 }
