@@ -21,7 +21,13 @@ function saveOptions(e) {
 	browser.storage.local.set({
 		separator: document.getElementById("separatorField").value
 	});
+	document.getElementById("saveButton").disabled = true;
+}
+
+function activateSaveButton() {
+	document.getElementById("saveButton").disabled = false;
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);
 document.getElementById("form").addEventListener("submit", saveOptions);
+document.getElementById("separatorField").addEventListener("input", activateSaveButton);
