@@ -1,0 +1,33 @@
+.settings {
+	table-layout: fixed;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+.settings * {
+	vertical-align: top;
+}
+
+.settings tr {
+	border-top: 1px solid #c1c1c1;
+}
+
+.settings tr td {
+	overflow: hidden;
+	padding: 0.5em 0;
+}
+
+.settings tr td .description {
+	color: graytext;
+	margin-inline-start: 2em;
+	white-space: pre-wrap;
+}
+
+input[type=""], input[type="text"], input[type="number"], select {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+	display: inline
+}

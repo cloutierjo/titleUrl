@@ -1,4 +1,3 @@
-// window.addEventListener('load', updateUrl, false);
 browser.runtime.onMessage.addListener(updateUrl)
 updateUrl()
 
@@ -9,21 +8,23 @@ function updateUrl() {
 function getTitle() {
 	var url = document.URL;
 
-	url = url.replace(/(https?:\/\/[^\/]*\/)[^:]*/i, "$1");
-
 	if (document.title.indexOf(url) < 0) {
-		var separatorPromise = browser.storage.local.get("separator");
-		separatorPromise.then(updateTitle);
-	}
+		browser.storage.local.get().then(function(data) {
+			// override default settings with localstorage data
+			Object.keys(data).forEach(function(key){
+				settings[key] = data[key];
+			});
+			return settings;
+		}).then(function(settings){
+			var group = "$1";
+			if (settings.hideProtocol) {
+				group = "$2"
+			}
+			url = url.replace(/(https?:\/\/([^\/]*)\/)[^:]*/i, group);
 
-	function updateTitle(result) {
-		let separator = "|";
-		if (result.separator) {
-			separator = result.separator;
-		}
-
-		if (document.title.indexOf(url) < 0) {
-			document.title = document.title + " " + separator + " " + url;
-		}		
+			if (document.title.indexOf(url) < 0) {
+				document.title = document.title + " " + settings.separator + " " + url;
+			}		
+		});
 	}
 }

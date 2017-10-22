@@ -9,14 +9,18 @@
 		"<all_urls>", "tabs", "storage"
 	],
 	
-	"content_scripts": [
-	{
+	"content_scripts": [{
 		"matches": ["<all_urls>"],
-		"js": ["titleUrlPage.js"]
-	}
-	],
+		"js": [
+			"defaultSettings.js",
+			"titleUrlPage.js"
+		]
+	}],
 	"background": {
-		"scripts": ["titleurl.js"]
+		"scripts": [
+			"defaultSettings.js",
+			"titleurl.js"
+		]
 	},
 	
 	"options_ui": {

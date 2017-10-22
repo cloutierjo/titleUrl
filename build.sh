@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm titleUrl.zip
+rm titleUrl.xpi
 cd addon
-zip -r ../titleUrl.zip *
+zip -r ../titleUrl.xpi *
 cd ..

@@ -1,26 +1,44 @@
 function restoreOptions() {
-	var separatorPromise = browser.storage.local.get("separator");
-	separatorPromise.then(setSeparator, onError);
-
-	function setSeparator(result) {
-		if (result.separator) {
-			document.getElementById("separatorField").value = result.separator;
-		} else { // on first install, set separator to "|" and save to storage
-			document.getElementById("separatorField").value = "|";
-			document.getElementById("saveButton").click();
-		}
-	}
-
-	function onError(error) { //reset to default
-		document.getElementById("separatorField").value = "|";
-	}
+	browser.storage.local.get().then(function(data) {
+		// override default settings with localstorage data
+		Object.keys(data).forEach(function(key){
+			settings[key] = data[key];
+		});
+		return settings;
+	}).then(function(settings) {
+		// display all settings 
+		Object.keys(settings).forEach(function(key){
+			console.log(key,settings[key]);
+			var input = document.getElementById(key);
+			console.log(input);
+			if (input){
+				if (input.type === "checkbox"){
+					input.checked = settings[key];
+				} else {
+					input.value = settings[key];
+				}
+			}
+		});
+	});
 }
 
 function saveOptions(e) {
 	e.preventDefault();
-	browser.storage.local.set({
-		separator: document.getElementById("separatorField").value
+
+	var obj = {};
+	
+	Object.keys(settings).forEach(function(key){
+		var input = document.getElementById(key);
+		if (input){
+			if (input.type === "checkbox"){
+				obj[key] = input.checked;
+			} else {
+				obj[key] = input.value;
+			}
+		}
 	});
+	console.log(obj);
+	browser.storage.local.set(obj);
 }
 
 document.addEventListener("DOMContentLoaded", restoreOptions);

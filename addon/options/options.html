@@ -1,13 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>TitleURL Settings</title>
+	<link href="options.css" rel="stylesheet" type="text/css">
 	<meta charset="utf-8">
 </head>
 <body>
+	<script src="../defaultSettings.js"></script>
 	<form id="form">
-		<input type="text" name="separatorField" id="separatorField">
-		<label for="separatorField">Character(s) to separate page title and URL</label><br>
-		<button type="submit" id="saveButton">Save</button>
+		<table class="settings">
+			<tr>
+				<td>
+					<div>
+						<span class="title">Character separator</span>
+						<div class="description">Character(s) to separate page title and URL</div>
+					</div>
+				</td>
+				<td>
+					<input type="text" name="separator" id="separator">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div>
+						<span class="title">Hide protocol</span>
+						<div class="description">Hide protocol from URL in title</div>
+					</div>
+				</td>
+				<td>
+					<input type="checkbox" name="hideProtocol" id="hideProtocol">
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<button type="submit" id="saveButton">Save</button>
+				</td>
+			</tr>
+		</table>
 	</form>
 	<script src="options.js"></script>
 </body>
