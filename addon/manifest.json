@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "TitleURL",
-	"version": "0.3",
+	"version": "0.4b",
 	
 	"description": "Add the current URL to the windows title bar",
 
