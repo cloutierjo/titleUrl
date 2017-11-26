@@ -23,7 +23,7 @@ function getTitle() {
 			url = url.replace(/(https?:\/\/([^\/]*)\/)[^:]*/i, group);
 
 			if (document.title.indexOf(url) < 0) {
-				document.title = document.title + " " + settings.separator + " " + url;
+				document.title = document.title + " " + settings.separator + " " + url + "/";
 			}		
 		});
 	}
