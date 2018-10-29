@@ -1,6 +1,8 @@
 
 function updateUrl(tabId, changeInfo, tabInfo) {
-    browser.tabs.sendMessage(tabId, {action:"updateUrl"});
+    if (changeInfo.url) {
+        browser.tabs.sendMessage(tabId, {action:"updateUrl"});
+    }
 }
 
 function updateTab(tab, changeInfo, tabInfo) {
