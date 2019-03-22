@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "TitleURL",
-	"version": "0.5",
+	"version": "0.6",
 	
 	"description": "Add the current URL to the windows title bar",
 
@@ -10,7 +10,7 @@
 	],
 	
 	"content_scripts": [{
-		"matches": ["<all_urls>"],
+		"matches": ["*://*/*"],
 		"js": [
 			"defaultSettings.js",
 			"titleUrlPage.js"
