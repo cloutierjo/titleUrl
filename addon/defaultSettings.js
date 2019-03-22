@@ -1,4 +1,5 @@
 const settings = {
 	separator: "|",
-	hideProtocol: false
+	hideProtocol: false,
+	fullURL: true
 }

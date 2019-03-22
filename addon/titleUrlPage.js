@@ -10,7 +10,6 @@ function getTitle() {
 
 	if (document.title.indexOf(url) < 0) {
 		browser.storage.local.get().then(function(data) {
-			// override default settings with localstorage data
 			Object.keys(data).forEach(function(key){
 				settings[key] = data[key];
 			});
@@ -20,10 +19,14 @@ function getTitle() {
 			if (settings.hideProtocol) {
 				group = "$2"
 			}
-			url = url.replace(/(https?:\/\/([^\/]*\/)).*/i, group);
-
-			if (document.title.indexOf(url) < 0) {
-				document.title = document.title + " " + settings.separator + " " + url;
+			turl = url.replace(/(https?:\/\/([^\/]*\/)).*/i, group);
+			
+			if (settings.fullURL) {
+				turl = url;
+			}
+			
+			if (document.title.indexOf(turl) < 0) {
+				document.title = document.title + " " + settings.separator + " " + turl;
 			}		
 		});
 	}
